@@ -9,7 +9,7 @@ set(VERSION "0.0.1")
 
 # Define include dir
 include_directories(
-    ${CMAKE_SOURCE_DIR}/lib/qlift-c-api/include
+    ${CMAKE_SOURCE_DIR}/lib/qlift-c-api/src/public
     ${CMAKE_SOURCE_DIR}/lib/qlift-c-api/src
 )
 
