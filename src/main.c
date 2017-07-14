@@ -19,8 +19,12 @@ int main(int argc, char *argv[]) {
     QLabel_setAlignment(label, 132);
     void *pushButton = QPushButton_new(NULL, "Push me!", mainWindow);
     QAbstractButton_clicked_connect(pushButton, pushButton, &slot);
+    void *spacer1 = QSpacerItem_new(20, 40, 1, 7);
+    void *spacer2 = QSpacerItem_new(20, 40, 1, 7);
     QBoxLayout_addWidget(layout, label, 0, 0);
+    QBoxLayout_addItem(layout, spacer1);
     QBoxLayout_addWidget(layout, pushButton, 0, 0);
+    QBoxLayout_addItem(layout, spacer2);
     QMainWindow_setCentralWidget(mainWindow, widget);
     QWidget_show(mainWindow);
     int result = QCoreApplication_exec(application);
