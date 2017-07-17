@@ -13,8 +13,6 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/lib/qlift-c-api/src
 )
 
-set(ENABLE_SHARED OFF CACHE BOOL "Do not build shared library")
-set(ENABLE_STATIC ON CACHE BOOL "Build static library")
 add_subdirectory(lib/qlift-c-api)
 
 # Define source files
