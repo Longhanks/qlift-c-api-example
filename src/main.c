@@ -6,8 +6,8 @@
 
 #include "qlift-c-api.h"
 
-void slot(int checked) {
-    printf("You clicked, button is checked: %i\n", checked);
+void slot(void *data, int checked) {
+    printf("You clicked \"%s\", checked: %s\n", QAbstractButton_text(data), checked ? "true" : "false");
 }
 
 int main(int argc, char *argv[]) {
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     void *label = QLabel_new("Hello, world!", NULL, 0);
     QLabel_setAlignment(label, 132);
     void *pushButton = QPushButton_new(NULL, "Push me!", mainWindow);
-    QAbstractButton_clicked_connect(pushButton, pushButton, &slot);
+    QAbstractButton_clicked_connect(pushButton, pushButton, pushButton, &slot);
     void *spacer1 = QSpacerItem_new(20, 40, 1, 7);
     void *spacer2 = QSpacerItem_new(20, 40, 1, 7);
     QBoxLayout_addWidget(layout, label, 0, 0);
