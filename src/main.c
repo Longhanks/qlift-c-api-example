@@ -26,6 +26,12 @@ int main(int argc, char *argv[]) {
     QBoxLayout_addWidget(layout, pushButton, 0, 0);
     QBoxLayout_addItem(layout, spacer2);
     QMainWindow_setCentralWidget(mainWindow, widget);
+    void *menubar = QMenuBar_new(NULL);
+    void *menu = QMenu_new("File", menubar);
+    void *action = QAction_new(NULL, "Exit", menu);
+    QWidget_addAction(menu, action);
+    QWidget_addAction(menubar, QMenu_menuAction(menu));
+    QMainWindow_setMenuBar(mainWindow, menubar);
     QWidget_show(mainWindow);
     int result = QCoreApplication_exec(application);
     return result;
