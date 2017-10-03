@@ -3,11 +3,16 @@
 #endif
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "qlift-c-api.h"
 
-void slot(void *data, int checked) {
+void slot(void *data, bool checked) {
     printf("You clicked \"%s\", checked: %s\n", QAbstractButton_text(data), checked ? "true" : "false");
+}
+
+void mousePressEvent(void *context, void *event) {
+    QPushButton_mousePressEvent(context, event);
 }
 
 int main(int argc, char *argv[]) {
@@ -19,6 +24,7 @@ int main(int argc, char *argv[]) {
     QLabel_setAlignment(label, 132);
     void *pushButton = QPushButton_new(NULL, "Push me!", mainWindow);
     QAbstractButton_clicked_connect(pushButton, pushButton, pushButton, &slot);
+    QPushButton_mousePressEvent_Override(pushButton, pushButton, &mousePressEvent);
     void *spacer1 = QSpacerItem_new(20, 40, 1, 7);
     void *spacer2 = QSpacerItem_new(20, 40, 1, 7);
     QBoxLayout_addWidget(layout, label, 0, 0);
